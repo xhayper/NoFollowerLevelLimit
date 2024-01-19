@@ -4,7 +4,7 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "xhayper"
 name = "NoFollowerLevelLimit"
-versionNumber = "1.0.2"
+versionNumber = "1.0.3"
 description = "Remove follower level limit"
 websiteUrl = "https://github.com/xhayper/NoFollowerLevelLimit"
 containsNsfwContent = false
