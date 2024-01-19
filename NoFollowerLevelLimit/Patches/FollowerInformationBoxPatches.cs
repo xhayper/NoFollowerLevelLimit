@@ -34,7 +34,7 @@ public class FollowerInformationBoxPatches
     */
     [HarmonyPatch(typeof(FollowerInformationBox), nameof(FollowerInformationBox.ConfigureImpl))]
     [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> FollowerInformationBox_ConfigureImpl(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> FollowerInformationBox_ConfigureImpl(IEnumerable<CodeInstruction> instructions)
     {
         var codes = new List<CodeInstruction>(instructions);
 
