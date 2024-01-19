@@ -12,7 +12,7 @@ public class FollowerBrainInfoPatches
         __result = false;
         return false;
     }
-    
+
     [HarmonyPatch(typeof(FollowerBrainInfo), nameof(FollowerBrainInfo.MaxLevelReached), MethodType.Setter)]
     [HarmonyPrefix]
     private static bool FollowerBrainInfo_MaxLevelReached_setter(FollowerBrainInfo __instance)

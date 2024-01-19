@@ -8,9 +8,9 @@
         <RepositoryUrl>https://github.com/xhayper/NoFollowerLevelLimit</RepositoryUrl>
     </PropertyGroup>
 
-    <Import Project="../NoFollowerLevelLimit.Common.props" />
+    <Import Project="../NoFollowerLevelLimit.Common.props"/>
 
     <ItemGroup>
-        <PackageReference Include="CultOfTheLamb.GameLibs" Version="1.3.3.344-r.0" />
+        <PackageReference Include="CultOfTheLamb.GameLibs" Version="1.3.3.344-r.0"/>
     </ItemGroup>
 </Project>
