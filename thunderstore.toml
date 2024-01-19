@@ -6,6 +6,7 @@ namespace = "xhayper"
 name = "NoFollowerLevelLimit"
 versionNumber = "1.0.0"
 description = "Remove follower level limit"
+websiteUrl = "https://github.com/xhayper/NoFollowerLevelLimit"
 containsNsfwContent = false
 
 [package.dependencies]
