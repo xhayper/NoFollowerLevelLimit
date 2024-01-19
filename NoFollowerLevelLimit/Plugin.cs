@@ -1,6 +1,6 @@
 using System.Reflection;
-using HarmonyLib;
 using BepInEx;
+using HarmonyLib;
 
 namespace NoFollowerLevelLimit;
 
@@ -10,12 +10,12 @@ namespace NoFollowerLevelLimit;
 public class Plugin : BaseUnityPlugin
 {
     private readonly Harmony _harmony = new(MyPluginInfo.PLUGIN_GUID);
-    
+
     private void Awake()
     {
         Logger.LogInfo($"{MyPluginInfo.PLUGIN_NAME} loaded!");
     }
-    
+
     private void OnEnable()
     {
         _harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -36,10 +36,7 @@ public class Plugin : BaseUnityPlugin
         {
             if (!follower.MaxLevelReached) return;
 
-            if (!follower.IsDisciple)
-            {
-                follower.Traits.Remove(FollowerTrait.TraitType.Disciple);
-            }
+            if (!follower.IsDisciple) follower.Traits.Remove(FollowerTrait.TraitType.Disciple);
 
             follower.MaxLevelReached = false;
         }
