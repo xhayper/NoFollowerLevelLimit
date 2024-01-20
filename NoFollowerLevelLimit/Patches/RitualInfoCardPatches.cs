@@ -4,6 +4,7 @@ using Lamb.UI.Rituals;
 
 namespace NoFollowerLevelLimit.Patches;
 
+[HarmonyPatch]
 public class RitualInfoCardPatches
 {
     [HarmonyPatch(typeof(RitualInfoCard), nameof(RitualInfoCard.Configure))]
