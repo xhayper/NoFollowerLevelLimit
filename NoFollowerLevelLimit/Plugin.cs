@@ -1,6 +1,5 @@
 using System.Reflection;
 using HarmonyLib;
-
 using BepInEx;
 
 namespace NoFollowerLevelLimit;
@@ -35,10 +34,9 @@ public class Plugin : BaseUnityPlugin
     {
         foreach (var follower in DataManager.instance.Followers)
         {
-            if (!follower.MaxLevelReached) return;
+            if (10 > follower.XPLevel) return;
 
             if (!follower.IsDisciple) follower.Traits.Remove(FollowerTrait.TraitType.Disciple);
-
             follower.MaxLevelReached = false;
         }
     }
