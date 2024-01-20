@@ -1,5 +1,4 @@
-﻿using System.Reflection.Emit;
-using HarmonyLib;
+﻿using HarmonyLib;
 
 namespace NoFollowerLevelLimit.Patches;
 
