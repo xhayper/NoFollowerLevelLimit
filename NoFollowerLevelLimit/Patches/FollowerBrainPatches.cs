@@ -26,47 +26,21 @@ public class FollowerBrainPatches
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> FollowerBrain_AddAdoration(IEnumerable<CodeInstruction> instructions)
     {
-        var codes = new List<CodeInstruction>(instructions);
-
-        var found = false;
-        var codeIndex = 0;
-
-        // TODO: Add operand check
-        for (var i = 0; i < codes.Count; i++)
-        {
-            // this.Stats.HasLevelledUp
-            if (codes[i].opcode != OpCodes.Ldarg_0) continue;
-            if (codes[i + 1].opcode != OpCodes.Ldfld) continue;
-            if (codes[i + 2].opcode != OpCodes.Callvirt) continue;
-            if (codes[i + 3].opcode != OpCodes.Brtrue_S) continue;
-
-            // !DataManager.Instance.ShowLoyaltyBars
-            if (codes[i + 4].opcode != OpCodes.Call) continue;
-            if (codes[i + 5].opcode != OpCodes.Ldfld) continue;
-            if (codes[i + 6].opcode != OpCodes.Brfalse_S) continue;
-
-            // this.Info.XPLevel >= 10
-            if (codes[i + 7].opcode != OpCodes.Ldarg_0) continue;
-            if (codes[i + 8].opcode != OpCodes.Ldfld) continue;
-            if (codes[i + 9].opcode != OpCodes.Callvirt) continue;
-            if (codes[i + 10].opcode != OpCodes.Ldc_I4_S && (int)codes[i + 3].operand == 10) continue;
-            if (codes[i + 11].opcode != OpCodes.Bge_S) continue;
-
-            found = true;
-            codeIndex = i;
-
-            break;
-        }
-
-        if (!found) return codes.AsEnumerable();
-
-        codes[codeIndex + 7] = new CodeInstruction(OpCodes.Nop);
-        codes[codeIndex + 8] = new CodeInstruction(OpCodes.Nop);
-        codes[codeIndex + 9] = new CodeInstruction(OpCodes.Nop);
-        codes[codeIndex + 10] = new CodeInstruction(OpCodes.Nop);
-        codes[codeIndex + 11] = new CodeInstruction(OpCodes.Nop);
-
-        return codes.AsEnumerable();
+        return new CodeMatcher(instructions)
+            .MatchForward(false,
+                new CodeMatch(OpCodes.Ldarg_0),
+                new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(FollowerBrain), "Info")),
+                new CodeMatch(OpCodes.Callvirt,
+                    AccessTools.PropertyGetter(typeof(FollowerBrainInfo), "XPLevel")),
+                new CodeMatch(i => i.opcode == OpCodes.Ldc_I4_S && ((sbyte)10).Equals(i.operand)) //,
+                // new CodeMatch(i => i.opcode == OpCodes.Bge_S)
+            )
+            .SetAndAdvance(OpCodes.Nop, null)
+            .SetAndAdvance(OpCodes.Nop, null)
+            .SetAndAdvance(OpCodes.Nop, null)
+            .SetAndAdvance(OpCodes.Nop, null)
+            .SetAndAdvance(OpCodes.Nop, null)
+            .InstructionEnumeration();
     }
 
     [HarmonyPatch(typeof(FollowerBrain), nameof(FollowerBrain.GetWillLevelUp))]
