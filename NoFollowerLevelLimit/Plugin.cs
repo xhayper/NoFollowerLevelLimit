@@ -1,6 +1,6 @@
 using System.Reflection;
-using HarmonyLib;
 using BepInEx;
+using HarmonyLib;
 
 namespace NoFollowerLevelLimit;
 
