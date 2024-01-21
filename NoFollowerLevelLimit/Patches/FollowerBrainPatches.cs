@@ -26,14 +26,6 @@ public class FollowerBrainPatches
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> FollowerBrain_AddAdoration(IEnumerable<CodeInstruction> instructions)
     {
-        /*
-         *
-    IL_0021: ldarg.0      // this
-    IL_0022: ldfld        class FollowerBrainInfo FollowerBrain::Info
-    IL_0027: callvirt     instance int32 FollowerBrainInfo::get_XPLevel()
-    IL_002c: ldc.i4.s     10 // 0x0a
-    IL_002e: bge.s        IL_0047
-         */
         return new CodeMatcher(instructions)
             .MatchForward(false,
                 new CodeMatch(OpCodes.Ldarg_0),
