@@ -13,12 +13,12 @@ public class RitualItemPatches
     {
         return new CodeMatcher(instructions)
             .MatchForward(false,
-                new CodeMatch(OpCodes.Ldloc_1),
+                new CodeMatch(OpCodes.Ldloc_2),
                 new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(FollowerBrain), "Info")),
                 new CodeMatch(OpCodes.Callvirt,
                     AccessTools.PropertyGetter(typeof(FollowerBrainInfo), "XPLevel")),
-                new CodeMatch(i => i.opcode == OpCodes.Ldc_I4_S && ((sbyte)10).Equals(i.operand)) //,
-                // new CodeMatch(i => i.opcode == OpCodes.Blt_S)
+                new CodeMatch(OpCodes.Ldc_I4_S, (sbyte)0x0a),
+                new CodeMatch(OpCodes.Blt)
             )
             .SetAndAdvance(OpCodes.Nop, null)
             .SetAndAdvance(OpCodes.Nop, null)
