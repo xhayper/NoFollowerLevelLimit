@@ -1,7 +1,7 @@
 ﻿<Project>
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
-        <Version>1.0.9</Version>
+        <Version>1.0.10</Version>
         <LangVersion>latest</LangVersion>
         <IsPackable>true</IsPackable>
         <ImplicitUsings>true</ImplicitUsings>
@@ -25,9 +25,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+        <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all" />
         <PackageReference Include="BepInEx.Core" Version="5.4.21" />
-        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
         <PackageReference Include="UnityEngine.Modules" Version="2021.3.16" IncludeAssets="compile" />
     </ItemGroup>
 
