@@ -34,8 +34,6 @@ public class Plugin : BaseUnityPlugin
     {
         foreach (var follower in DataManager.instance.Followers)
         {
-            // TODO: Remove this in the future
-            follower.IsDisciple = follower.XPLevel >= 10;
             follower.MaxLevelReached = false;
         }
     }
