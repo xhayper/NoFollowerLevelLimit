@@ -4,7 +4,7 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "xhayper"
 name = "NoFollowerLevelLimit"
-versionNumber = "1.0.9"
+versionNumber = "1.0.10"
 description = "Remove follower level limit"
 websiteUrl = "https://github.com/xhayper/NoFollowerLevelLimit"
 containsNsfwContent = false
@@ -19,7 +19,7 @@ outdir = "./build"
 
 [[build.copy]]
 source = "bin/Release/NoFollowerLevelLimit/NoFollowerLevelLimit.dll"
-target = "plugins/io.github.xhayper.NoFollowerLevelLimit/NoFollowerLevelLimit.dll"
+target = "plugins/me.xhayper.NoFollowerLevelLimit/NoFollowerLevelLimit.dll"
 
 [publish]
 repository = "https://cult-of-the-lamb.thunderstore.io"

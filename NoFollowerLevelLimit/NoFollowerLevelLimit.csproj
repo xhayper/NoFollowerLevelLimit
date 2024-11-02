@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Guid>io.github.xhayper.NoFollowerLevelLimit</Guid>
+        <Guid>me.xhayper.NoFollowerLevelLimit</Guid>
         <Product>NoFollowerLevelLimit</Product>
         <Title>No Follower Level Limit</Title>
         <Description>Remove follower level limit</Description>
@@ -11,6 +11,6 @@
     <Import Project="../NoFollowerLevelLimit.Common.props"/>
 
     <ItemGroup>
-        <PackageReference Include="CultOfTheLamb.GameLibs" Version="1.3.3.344-r.0"/>
+        <PackageReference Include="CultOfTheLamb.GameLibs" Version="1.4.4.590-r.0"/>
     </ItemGroup>
 </Project>
